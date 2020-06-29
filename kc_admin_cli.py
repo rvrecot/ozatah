@@ -21,3 +21,24 @@ realm_response = requests.get(realm_url, headers=headers)
 for realm in json.loads(realm_response.content):
     print(realm["realm"])
     
+#1 Human readable format von JSON
+ReadableFormat = str(response_json).replace(', ','\n')
+print(ReadableFormat)
+###############################################
+
+#2 Create a new Realm
+keycloak_admin.create_realm(payload={"realm": "demo"}, skip_exists=False)
+###############################################
+
+#3 Add another redirect URI to one of the clients
+
+###############################################
+
+#4 Delete one of the clients
+delete_client(client_id = "account-console")
+
+###############################################
+
+#5 Detect that one of the clients is missing and add it again.
+
+###############################################
